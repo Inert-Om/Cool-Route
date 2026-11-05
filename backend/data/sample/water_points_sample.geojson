@@ -1,0 +1,33 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "type": "fountain",
+    "status": "open"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     85.776,
+     20.2761
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "type": "shaded rest area",
+    "status": "open"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     85.776,
+     20.2781
+    ]
+   }
+  }
+ ]
+}

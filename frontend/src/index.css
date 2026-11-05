@@ -1,0 +1,9 @@
+/* always-visible labels for named campus places */
+.place-label {
+  font: 600 12px system-ui, sans-serif;
+  padding: 1px 6px;
+  color: #4a148c;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #ab47bc;
+  border-radius: 4px;
+}
