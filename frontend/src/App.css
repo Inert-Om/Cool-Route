@@ -1,0 +1,142 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color:#F5F7FA;
+  font-family:Arial,sans-serif;
+}
+.homepage {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at 10% 10%,
+      #B8EBD0,
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 90% 80%,
+      #BBD9F5,
+      transparent 50%
+    ),
+    #F5FAF7;
+}
+.tagline{
+  display:flex;
+  gap:50px;
+  align-items:flex-start;
+  
+}
+
+
+#tag1 {
+  font-family: "Zalando Sans Expanded", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:400px;
+  font-style : normal;
+  font-size:90px;
+  margin-top:210px;
+  position:absolute;
+  left:150px;
+  color: black;
+  text-shadow:0 2px 4px rgba(27,42,63,0.5);
+}
+#tag2{
+  font-family: "Zalando Sans Expanded", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:400px;
+  font-style : normal;
+  font-size: 90px;
+  margin-top:295px;
+  position:absolute;
+  left:150px;
+  color:black;
+  text-shadow:0 2px 4px rgba(27,42,63,0.5);
+
+}
+.about_section{
+  display:flex;
+  align-items:flex-start;
+}
+
+#about_card{
+  background: transparent;
+  width:690px;
+  font-weight:bold;
+  font-family:"Montserrat",sans-serif;
+  font-size:medium;
+  height:120px;
+  margin-top:350px;
+  position:absolute;
+  left:150px;
+  border:none;
+
+  color:black;
+}
+.navbar{
+  box-shadow: 0 4px 20px rgba(23,51,75,0.3);
+  display:flex;
+  flex-direction: row;
+}
+#cool-stride{
+  color:#157f47;
+  font-family:"Poppins",sans-serif;
+  padding-left:20px;
+  font-weight: bold;
+  font-size:30px;
+  padding-top:20px;
+  position: absolute;
+  left:135px;
+  text-shadow:0 2px 4px rgba(27,42,63,0.15);
+
+}
+#home{
+  color:#157f47;
+  font-family:"Inter",sans-serif;
+  padding-left:20px;
+  font-weight: bold;
+  font-size:22px;
+  padding-top:20px;
+  position: absolute;
+  left:800px;
+  text-shadow:0 2px 4px rgba(27,42,63,0.15);
+
+}
+#abouthead{
+  color:#157f47;
+  font-family:"Inter",sans-serif;
+  padding-left:20px;
+  font-weight: bold;
+  font-size:22px;
+  padding-top:20px;
+  position: absolute;
+  left:970px;
+  text-shadow:0 2px 4px rgba(27,42,63,0.25);
+
+}
+button{
+  background:#157f47;
+  color:white;
+  font-weight:bold;
+  font-family: "Inter", sans-serif;
+  font-size:17px;
+  border-radius:999px;
+  width:190px;
+  height:40px;
+  position:absolute;
+  left:1180px;
+  margin-top:5px;
+  box-shadow: 0 4px 20px rgba(23,51,75,0.3);
+  text-shadow:0 2px 4px rgba(27,42,63,0.5);
+  border:none;
+  margin-top:20px;
+}
+#button{
+  margin-top:530px;
+  position:absolute;
+  left:135px;
+  text-shadow:0 2px 4px rgba(27,42,63,0.5);
+}
+
