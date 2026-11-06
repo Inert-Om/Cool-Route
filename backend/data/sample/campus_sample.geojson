@@ -1,0 +1,134 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "West Road",
+    "surface": "asphalt",
+    "shade": 0.2
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      85.774,
+      20.274
+     ],
+     [
+      85.774,
+      20.278
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "East Road",
+    "surface": "asphalt",
+    "shade": 0.3
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      85.778,
+      20.274
+     ],
+     [
+      85.778,
+      20.278
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "South Road",
+    "surface": "asphalt",
+    "shade": 0.1
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      85.774,
+      20.274
+     ],
+     [
+      85.778,
+      20.274
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Tree Avenue",
+    "surface": "tiles",
+    "shade": 0.9
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      85.774,
+      20.278
+     ],
+     [
+      85.776,
+      20.278299999999998
+     ],
+     [
+      85.778,
+      20.278
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Cross Road (no shared vertices)",
+    "surface": "concrete",
+    "shade": 0.5
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      85.774,
+      20.276
+     ],
+     [
+      85.778,
+      20.276
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Disconnected stub",
+    "shade": 0.5
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      85.79,
+      20.29
+     ],
+     [
+      85.791,
+      20.29
+     ]
+    ]
+   }
+  }
+ ]
+}
