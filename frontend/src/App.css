@@ -94,7 +94,7 @@ body{
 }
 #home{
   color:#157f47;
-  font-family:"Inter",sans-serif;
+  font-family:"Lexend",sans-serif;
   padding-left:20px;
   font-weight: bold;
   font-size:22px;
@@ -106,7 +106,7 @@ body{
 }
 #abouthead{
   color:#157f47;
-  font-family:"Inter",sans-serif;
+  font-family:"Lexend",sans-serif;
   padding-left:20px;
   font-weight: bold;
   font-size:22px;
@@ -120,7 +120,7 @@ button{
   background:#157f47;
   color:white;
   font-weight:bold;
-  font-family: "Inter", sans-serif;
+  font-family: "Lexend", sans-serif;
   font-size:17px;
   border-radius:999px;
   width:190px;
@@ -130,7 +130,7 @@ button{
   margin-top:5px;
   box-shadow: 0 4px 20px rgba(23,51,75,0.3);
   text-shadow:0 2px 4px rgba(27,42,63,0.5);
-  border:none;
+  
   margin-top:20px;
 }
 #button{
