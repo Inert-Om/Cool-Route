@@ -133,11 +133,17 @@ button{
   
   margin-top:20px;
 }
+button:hover{
+  background-color:black;
+}
 #button{
   margin-top:530px;
   position:absolute;
   left:135px;
   text-shadow:0 2px 4px rgba(27,42,63,0.5);
+}
+#button:hover{
+  background-color:black;
 }
 .reveal {
   opacity: 0;
@@ -151,4 +157,10 @@ button{
     opacity: 1;
     translate: 0 0;
   }
+}
+#home:hover{
+  color:black;
+}
+#abouthead:hover{
+  color:black;
 }
