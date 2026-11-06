@@ -1,7 +1,9 @@
+import math
 import networkx as nx
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+import pathfinder
 from graph_loader import (edge_coords, graph_center, load_graph, load_places, load_water_points,
                           nearest_node, water_points_from_counts)
 from heat_adapter import SCENARIOS, edge_heat
@@ -12,6 +14,22 @@ CORS(app)  # lets the React dev server call us directly if you skip the Vite pro
 G, GRAPH_SOURCE = load_graph()
 PLACES, PLACES_SKIPPED = load_places(G)
 WALK_SPEED = 1.4  # m/s
+try:
+    _, PATHFINDER_EDGES, PATHFINDER_WEATHER = pathfinder.load_data()
+    PATHFINDER_LOAD_ERROR = None
+except FileNotFoundError as error:
+    PATHFINDER_EDGES, PATHFINDER_WEATHER = None, None
+    PATHFINDER_LOAD_ERROR = str(error)
+
+if PATHFINDER_EDGES is None:
+    PATHFINDER_SOURCE = f"built-in heat routing ({PATHFINDER_LOAD_ERROR})"
+else:
+    graph_roads = {edge.get("edge_id") for _, _, edge in G.edges(data=True) if edge.get("edge_id")}
+    source_roads = set(pathfinder.edge_costs_by_id(PATHFINDER_EDGES))
+    matched_roads = len(graph_roads & source_roads)
+    PATHFINDER_SOURCE = (
+        f"AHP route costs ({matched_roads}/{len(graph_roads)} graph roads matched)"
+    )
 
 # Placeholder water / rest points. TODO(data): load water_points.geojson instead.
 WATER_POINTS = []
@@ -67,7 +85,26 @@ def build_route(path, hour, scenario, route_id, label):
 
 def find_routes(o, d, hour, lam, scenario):
     fastest = nx.shortest_path(G, o, d, weight="length")
-    cost = lambda u, v, e: e["length"] / WALK_SPEED + lam * edge_heat(e, hour, scenario) / 10.0
+    if PATHFINDER_EDGES is not None:
+        edge_data = pathfinder.calculateCosts(
+            PATHFINDER_EDGES,
+            PATHFINDER_WEATHER,
+            pathfinder.getAHPWeights(),
+            hour,
+            scenario=scenario,
+            lam=lam,
+        )
+        road_costs = pathfinder.edge_costs_by_id(edge_data)
+
+        def cost(_u, _v, edge):
+            per_meter = road_costs.get(edge.get("edge_id"))
+            if per_meter is not None:
+                return edge["length"] * per_meter
+            return edge["length"] / WALK_SPEED + lam * edge_heat(edge, hour, scenario) / 10.0
+    else:
+        def cost(_u, _v, edge):
+            return edge["length"] / WALK_SPEED + lam * edge_heat(edge, hour, scenario) / 10.0
+
     coolest = nx.shortest_path(G, o, d, weight=cost)
     return (build_route(fastest, hour, scenario, "fastest", "Fastest"),
             build_route(coolest, hour, scenario, "coolest", "Coolest"))
@@ -77,7 +114,8 @@ def find_routes(o, d, hour, lam, scenario):
 def health():
     return jsonify(status="ok", graph=GRAPH_SOURCE, nodes=G.number_of_nodes(), edges=G.number_of_edges(),
                    places=len(PLACES), places_skipped=PLACES_SKIPPED,
-                   water_points=len(WATER_POINTS), water_points_source=WATER_SOURCE)
+                   water_points=len(WATER_POINTS), water_points_source=WATER_SOURCE,
+                   pathfinder=PATHFINDER_SOURCE)
 
 
 @app.get("/api/config")
@@ -123,6 +161,8 @@ def route():
         hour = float(body.get("hour", 14))
         lam = float(body.get("lambda", 1.0))
         scenario = body.get("scenario") or "none"
+        if not math.isfinite(hour) or not 0 <= hour <= 23 or not math.isfinite(lam) or lam < 0:
+            raise ValueError
         o = nearest_node(G, float(s["lat"]), float(s["lng"]))
         d = nearest_node(G, float(t["lat"]), float(t["lng"]))
     except (KeyError, TypeError, ValueError):

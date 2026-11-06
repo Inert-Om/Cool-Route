@@ -75,8 +75,11 @@ Data files in `backend/data/`:
 | `places.csv` | Named locations for map labels and From/To selectors |
 | `water_points.geojson` | Exact water-point locations |
 | `campus.geojson` | Alternative generic walking network |
+| `nodes.csv`, `edges.csv` | Node names and road attributes used by `pathfinder.py` |
+| `POWER_Point_Hourly_*.csv` | NASA POWER hourly weather used for AHP route costs |
 
 * If `water_points.geojson` is absent, water points are placed at repeatable approximate positions using counts from `segments.csv`. Missing shade values use placeholder values; `/api/health` reports the active data sources.
+* When the pathfinder CSV files are available, the coolest route uses the AHP costs in `backend/pathfinder.py`. The fastest route remains distance-based. If those files are absent, the backend reports that it is using its built-in heat costs instead.
 
 ## API overview
 
