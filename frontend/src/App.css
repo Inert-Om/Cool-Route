@@ -139,4 +139,16 @@ button{
   left:135px;
   text-shadow:0 2px 4px rgba(27,42,63,0.5);
 }
+.reveal {
+  opacity: 0;
+  translate: 0 24px;   
+  animation: revealIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 0.5s);
+}
 
+@keyframes revealIn {
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
