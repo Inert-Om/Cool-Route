@@ -17,7 +17,7 @@ function App(){
         <div id="about_card" className="reveal" style={{"--i":3}}>The world is getting hotter, and the way we navigate should evolve with it. Every journey comes with choices, but choosing a route shouldn't just be about saving time or distance. It should be about travelling smarter.
 CoolStride brings environmental awareness into everyday navigation, helping you look beyond the usual route and discover a more comfortable way forward.</div>
       </div>
-      <button id="button" className="reveal" style={{"--i":4}}>Try  CoolStride</button>
+      <button id="button" className="reveal" style={{"--i":4}}><a href="/map" style={{"text-decoration": "none", "color": "white"}}>Try CoolStride</a></button>
     </div>
   );
 }
