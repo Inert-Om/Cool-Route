@@ -1,10 +1,3 @@
-"""THE ONE PLACE the ML person's heat score plugs in.
-
-Backend only ever calls `edge_heat(...)`. When ML delivers heat.py, change the body of
-this function (or import theirs) and nothing else needs to change.
-
-Return value: heat load for traversing the whole edge (higher = hotter).
-"""
 import math
 
 SCENARIOS = {
