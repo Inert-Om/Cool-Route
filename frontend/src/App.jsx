@@ -6,9 +6,6 @@ function App(){
     <div className="homepage">
       <div className="navbar">
         <div id="cool-stride">CoolStride</div>
-        <p id="home">Home</p>
-        <p id="abouthead">About</p>
-        <button>Try CoolStride</button>
       </div>
       <div className="tagline">
          <p id="tag1"className="reveal" style={{"--i":0}} >Find your shade.</p>
